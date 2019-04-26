@@ -10,7 +10,13 @@ public class Human extends Monster {
     {
         super(name_);
         this.intLevel = 1;
-        this.intEXP = 0;
+        if(this.strName == "Bandit")
+        {
+            this.intEXP = 100;
+        }
+        else {
+            this.intEXP = 0;
+        }
         this.intCurrentHealth = 20;
         this.intMaxHealth = 30;
         this.intAttackPower = 5;
@@ -89,7 +95,7 @@ public class Human extends Monster {
             // Reset the current health to the max health
             this.intCurrentHealth = this.intMaxHealth;
             System.out.println("\nAs your level increases, so does your health capacity.  You now have: " +
-                    this.intMaxHealth + " health.  Use it wisely");
+                    this.intMaxHealth + " health.  Use it wisely\n");
         }
     }
     boolean CheckKey()
@@ -104,19 +110,19 @@ public class Human extends Monster {
         if(this.intKeyCount == 1)
         {
             this.hasKey = true;
-            System.out.println("\n What's this?  You loot the corpse and find a key.  You should find a locked door.");
+            System.out.println("\nWhat's this?  You loot the corpse and find a key.  You should find a locked door.\n");
         }
         else if(this.intKeyCount == 2)
         {
-            System.out.println("\n Hey, you found another key.  Where was that locked door?");
+            System.out.println("\nHey, you found another key.  Where was that locked door?\n");
         }
         else if(this.intKeyCount == 3)
         {
-            System.out.println("\n Well now.  That makes three keys.  Have you found a key ring yet?");
+            System.out.println("\nWell now.  That makes three keys.  Have you found a key ring yet?\n");
         }
         else if(this.intKeyCount >= 4)
         {
-            System.out.println("\n The exit only needs three keys.  Why are you still killing monsters?");
+            System.out.println("\nThe exit only needs three keys.  Why are you still killing monsters?\n");
         }
     }
     public int getKeyCount()
@@ -127,7 +133,7 @@ public class Human extends Monster {
     boolean getDead()
     {
         return isDead;
-    }
+    } // Return the value of isDead
     public void healPlayer()
     {
         // Heal player to max health

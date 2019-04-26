@@ -10,6 +10,14 @@ public class MobWrangler {
 
     public static void main(String[] args)
     {
+        //TODO initialize private Clip variable - clip;
+        // try catch - AudioInputStream variable = AudioSystem.getAudioInputStream(this.getClass().getResource("filename")
+        // clip = AudioSystem.getClip(); clip.open(audioInputStream);
+        // look up FloatControl for volume
+        // clip.loop(big number here);
+        // clip.start() [clip.stop() to kill it]
+        // end catch;
+
         // Initialize variables
         Introduction gameStart = new Introduction();
         PathDecisions stupidPath = new PathDecisions();
@@ -26,11 +34,11 @@ public class MobWrangler {
         ArrayList<Integer> roomList;
         ArrayList<Monster> monsterList;
         int intPlayerRoomChoice = 4, intCurrentRoom = 4, intPreviousRoom = 7, intMonsterCount = 2, intMobChoice;
-        boolean keepFighting = true, exitOpen = false, playerDead = false;
+        boolean keepFighting, exitOpen = false, playerDead = false;
 
 
-        gameStart.intro();
-
+//        gameStart.intro(); // temp blocker on intro for trouble shooting code
+        //TODO clear block before delivering final game
 
         // Game loop that runs until the player opens the locked door.
         // This trigger requires the finding of at least 3 keys looted from mobs slain
@@ -38,14 +46,20 @@ public class MobWrangler {
             if (player.getDead())
             {
                 //TODO Go to end game credits
-                System.out.println("Oh shit... all the bad stuff happened... like you died and literally shit yourself.");
+                System.out.println("All the bad stuff.");
                 playerDead = true;
             }
             else
                 {
                     // If player is not dead
                     // Choose a new random monster type
-                    intMobChoice = random.nextInt(intMonsterCount);
+                    if(player.intLevel == 1)
+                    {
+                        intMobChoice = 0;
+                    }
+                    else {
+                        intMobChoice = random.nextInt(intMonsterCount);
+                    }
                     if(intCurrentRoom != 6)
                     {
                         // If player is not in the sword room create a new monster as mob
@@ -69,8 +83,8 @@ public class MobWrangler {
                         // Attack, defend loop here
                         do {
                             try {
-                                sleep(500);
-                            }catch(Exception e){}
+                                sleep(1000);
+                            }catch(Exception e){  } // Do nothing, for time
 //                            System.out.println("Count " + count);
                             // Calculate for each attack round
                             rumble.Attack(player, mob);
@@ -98,7 +112,6 @@ public class MobWrangler {
                             {
                                 player.addKey();
                             }
-                            keepFighting = true;
                         }
                         else if(player.getDead())
                         {
@@ -143,22 +156,14 @@ public class MobWrangler {
             while(!exitOpen && !playerDead);
             if(exitOpen) {
                 System.out.println("You found the keys!");
-                System.out.println("Game over man!");
+                System.out.println("Congrats, you are free of this dungeon!");
             }
             else
             {
                 System.out.println("Game over man... GAME OVER!");
             }
 //        System.out.println("Working code!");
-//        System.out.println("Your health: " + player.intCurrentHealth);
-//        System.out.println("Your attack power: " + player.intAttackPower);
-//        System.out.println("\nGoblin health: " + goblin.intCurrentHealth);
-//        System.out.println("Goblin attack power: " + goblin.intAttackPower);
-//        rumble.Attack(player, goblin);
-//        System.out.println("\nGoblin health: " + goblin.intCurrentHealth);
-//        System.out.println("Congrats, you killed the goblin... You're crazy man... crazy!");
-//        int choice = stupidPath.choosePath(7, 4);
-//        System.out.println("You chose: " + choice);
+
 //        System.out.println("Rinse and repeat!");
     }
 }

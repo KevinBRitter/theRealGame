@@ -74,8 +74,6 @@ public class PathDecisions
         else if (intPrevRoomNum == 4 && intCurrentRoomNum == 7)
         {
             // You are in room 7, choices of back to 4
-            System.out.println("You think you've been here before.  Have you been here before?");
-            System.out.println("Yeah, this is where you woke up.  You recognise your sleepy drool.");
             System.out.println(" 1. - Back ");
             intPlayerChoice = verifyChoice(1);
             intRoomID = 4;
@@ -139,7 +137,7 @@ public class PathDecisions
             System.out.println("Where are you now?  Oh yeah, stuck in this dungeon.");
             System.out.println("You can go left, forward, or back, but that's a dead end right?");
             System.out.println("Why would you go there?");
-            System.out.println(" 1. - Left, 2. Right, 3. Back ");
+            System.out.println(" 1. - Left, 2. Forward, 3. Back ");
             intPlayerChoice = verifyChoice(3);
             intRoomID = idSetterRoom5(intPlayerChoice);
         }
@@ -517,12 +515,12 @@ public class PathDecisions
             if(swordvisit == 0)
             {
                 System.out.println("You proceeded down another hallway… and see in the very center of this room, a sword in the stone. \n" +
-                        " Stepping forward, your heart fluttered as you read the familiar epithet that was so often spoken of in \n" +
+                        "Stepping forward, your heart fluttered as you read the familiar epithet that was so often spoken of in \n" +
                         "regards to King Arthur: “Who-so-ever removes the sword from the stone, shall be the true king (or queen?) of \n" +
                         "Britain.” Were you the chosen one? One of your hands moved to grip the handle of the blade, and you tugged. \n" +
                         "And tugged again. Third time’s the charm? Another tug, another nope. Guess you’re not meant to be the true ruler \n" +
                         "of Britain. Probably for the best, considering the mess going on with Brexit. You do however find another blade, \n" +
-                        "much rustier, on the ground, and pick it up.");
+                        "much rustier, on the ground, and pick it up."); //TODO change to if on this line check if player has weapon.
 
             }
             else if(swordvisit == 1)

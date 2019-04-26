@@ -21,7 +21,6 @@ public abstract class Monster
         this("Unknown Terror");
     }
 
-
     abstract String MonsterName();
     abstract int MaxHealth();
     abstract int CurrentHealth();
