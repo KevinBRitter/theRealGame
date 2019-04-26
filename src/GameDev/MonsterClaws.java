@@ -11,8 +11,8 @@ public class MonsterClaws extends Weapon
         this.intWpnPower = wpnPower_;
         this.arrAttacks = new ArrayList<String>();
         //Ensuring the arraylist has the attacks!
-        arrAttacks.add("The goblin snarls angrily as it lunges forward, nasty, gnarled nails at you, \n" +
-                "raking across your skin. Hope you don't get an infection!");
+        arrAttacks.add("The goblin snarls angrily as it lunges forward. Nasty, gnarled nails rake\n" +
+                "across your skin! Hope you don't get an infection!");
         arrAttacks.add("Ragged nails rake rudely 'round your arms, causing pain and vicious scratches!\n" +
                 "That rapscallion! \n");
         arrAttacks.add("The goblin howls, spittle splattering spectacularly in front of it... If only \n" +

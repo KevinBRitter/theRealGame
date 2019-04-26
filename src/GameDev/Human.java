@@ -1,22 +1,18 @@
 package GameDev;
 
+import java.util.Random;
+
 public class Human extends Monster {
 
     // Attribute Declaration
     private int intKeyCount = 0;
 
-
     public Human(String name_)
     {
         super(name_);
+        this.randNum = new Random();
         this.intLevel = 1;
-        if(this.strName == "Bandit")
-        {
-            this.intEXP = 100;
-        }
-        else {
-            this.intEXP = 0;
-        }
+        this.intEXP = 0;
         this.intCurrentHealth = 20;
         this.intMaxHealth = 30;
         this.intAttackPower = 5;
@@ -26,7 +22,7 @@ public class Human extends Monster {
     }
     public Human()
     {
-        this("Bandit");
+        this("Chump");
     }
     String MonsterName()
     {
@@ -46,7 +42,8 @@ public class Human extends Monster {
     int AttackPower()
     {
         // Abstract method returns attack power
-        return this.intAttackPower;
+        int tempTotalPower = this.intAttackPower + this.mobWeapon.WpnDamage();
+        return tempTotalPower;
     }
     int GetLevel()
     {
@@ -56,7 +53,20 @@ public class Human extends Monster {
     void SetLevel(int level_)
     {
         // Abstract method sets current level
-        this.intLevel = level_;
+        if(level_ == 1)
+        {
+            this.intLevel = 1;
+        }
+        else if(level_ < 4)
+        {
+            int tempLvl = randNum.nextInt(5);
+            this.intLevel = 1 + tempLvl;
+        }
+        else if (level_ < 10)
+        {
+            int tempLvl = randNum.nextInt(5);
+            this.intLevel = 4 + tempLvl;
+        }
     }
     void TakeDamage(int damage_)
     {
@@ -96,6 +106,8 @@ public class Human extends Monster {
             this.intCurrentHealth = this.intMaxHealth;
             System.out.println("\nAs your level increases, so does your health capacity.  You now have: " +
                     this.intMaxHealth + " health.  Use it wisely\n");
+            this.intAttackPower++;
+            System.out.println("\nYou feel stronger.  Attack strength increased to: " + this.intAttackPower);
         }
     }
     boolean CheckKey()
@@ -141,8 +153,8 @@ public class Human extends Monster {
     }
     private void rollForWeapon()
     {
-        if(strName=="Bandit") {
-            int tempNum = randNum.nextInt(2);
+        if(strName.equals("Bandit")) {
+            int tempNum = this.randNum.nextInt(2);
             if (tempNum == 0) {
                 this.mobWeapon = new MonsterDagger();
             } else if (tempNum == 1) {
@@ -156,17 +168,9 @@ public class Human extends Monster {
         this.mobWeapon = newWeapon;
     }
 
-//    public int EXPTarget() {intEXPTarget = intLevel * 100; return intEXPTarget; }
-//
-//    public void PlayerLevelUp()
-//    {
-//        if(intEXP >= intEXPTarget) {
-//            intMaxHealth += 10;
-//            intAttackPower += 1;
-//            intLevel += 1;
-//            intEXP = intEXP - intEXPTarget;
-//            EXPTarget();
-//            intCurrentHealth = intMaxHealth;
-//        }
-//    }
+    void Status()
+    {
+        // Print health status
+        System.out.println(MonsterName() + ": " + "Level " + GetLevel() + "/ Current Health: "+ CurrentHealth());
+    }
 }

@@ -6,16 +6,17 @@ public class Goblin extends Monster
 {
     public Goblin(String name_, int level_) {
         super(name_);
-        randNum = new Random();
+        this.randNum = new Random();
         this.strName = name_;
-        this.intCurrentHealth = 20*level_;
-        this.intMaxHealth = 20*level_;
+        this.intCurrentHealth = 15 + 5 * level_;
+        this.intMaxHealth = 15 + 5 * level_;
+        SetLevel(level_);
         addArmour();
         addAttackPwr();
         rollForKey();
         rollForWeapon();
-        this.intLevel = level_;
-        this.intEXP = 100*level_;
+        //this.intLevel = level_;
+        this.intEXP = 100 + 5 * level_;
 
     }
     public Goblin()
@@ -40,7 +41,7 @@ public class Goblin extends Monster
     int AttackPower()
     {
         // Abstract method returns attack power
-        return this.intAttackPower;
+        return this.intAttackPower + this.mobWeapon.WpnDamage();
     }
     int GetLevel()
     {
@@ -50,7 +51,20 @@ public class Goblin extends Monster
     void SetLevel(int level_)
     {
         // Abstract method sets current level
-        this.intLevel = level_;
+        if(level_ == 1)
+        {
+            this.intLevel = 1;
+        }
+        else if(level_ < 4)
+        {
+            int tempLvl = randNum.nextInt(5);
+            this.intLevel = 1 + tempLvl;
+        }
+        else if (level_ < 10)
+        {
+            int tempLvl = randNum.nextInt(5);
+            this.intLevel = 4 + tempLvl;
+        }
     }
     void TakeDamage(int damage_)
     {
@@ -98,7 +112,7 @@ public class Goblin extends Monster
     private void addAttackPwr()
     {
         // Attack defaults to five
-        int tempNum = 5;
+        int tempNum = 3;
         if(this.intLevel > 20)
         {
             // If GameDev.Goblin level is greater than 20
@@ -118,7 +132,7 @@ public class Goblin extends Monster
     private void rollForKey()
     {
         // Roll to determine if the goblin is to have one of the keys
-        int tempNum = randNum.nextInt(3);
+        int tempNum = this.randNum.nextInt(3);
         // Set hasKey boolean
         if( tempNum == 0 ) { this.hasKey = true; }
         else { this.hasKey = false; }
@@ -131,7 +145,7 @@ public class Goblin extends Monster
 
     private void rollForWeapon()
     {
-        int tempNum = randNum.nextInt(2);
+        int tempNum = this.randNum.nextInt(2);
         if (tempNum == 0) {this.mobWeapon = new MonsterClaws();}
         else if (tempNum == 1) {this.mobWeapon = new MonsterDagger();}
     }
@@ -144,4 +158,10 @@ public class Goblin extends Monster
     {
         return isDead;
     } // Return value of isDead
+
+    void Status()
+    {
+        // Print status of health
+        System.out.println(MonsterName() + ": " + "Level " + GetLevel() + "/ Current Health: "+ CurrentHealth());
+    }
 }

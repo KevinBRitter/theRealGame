@@ -11,7 +11,7 @@ public class Encounter
     {
         // Attack method takes two entities and evaluates a single
         // attack / defence aggression
-        System.out.printf("\n%s attacks %s for %d damage." ,  attacker.strName , defender.strName , attacker.AttackPower() );
+        System.out.printf("\n%s attacks %s for %d damage.\n\n" ,  attacker.strName , defender.strName , attacker.AttackPower() );
         defender.TakeDamage(attacker.AttackPower());
 
     }
@@ -26,6 +26,11 @@ public class Encounter
         }
         else
             return true;
+    }
+    public void Status(Monster player, Monster mob)
+    {
+        player.Status();
+        mob.Status();
     }
     public void UpdateStatus(Monster player, Monster mob)
     {
@@ -43,7 +48,7 @@ public class Encounter
         player.UpdateLvl();
     }
 
-    private void WeaponCheck(Monster player, Monster mob)
+    public void WeaponCheck(Monster player, Monster mob)
     {
         if(mob.mobWeapon.intWpnPower > player.mobWeapon.intWpnPower)
         {
@@ -51,11 +56,15 @@ public class Encounter
             {
                 Dagger dagger = new Dagger();
                 player.Equip(dagger);
+                System.out.println("A dagger, even one as poorly made as this one, is still \n" +
+                        "better than your fists! You pick it up.");
             }
             else if (mob.mobWeapon.strName.contains("Sword"))
             {
                 Sword sword = new Sword();
                 player.Equip(sword);
+                System.out.println("A sword, even one as rusty as this one, is still \n" +
+                        "better than your current weapon! You pick it up.");
             }
         }
     }

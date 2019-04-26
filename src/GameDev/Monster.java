@@ -34,6 +34,7 @@ public abstract class Monster
     abstract boolean CheckKey();
     abstract boolean getDead();
     abstract void Equip(Weapon weapon);
+    abstract void Status();
 
 //    public void ChangeMonsterHealth(int intHealthChange_)
 //    {

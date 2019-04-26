@@ -11,13 +11,15 @@ public class PathDecisions
             room5BodyCount = 0, room7BodyCount = 0, room8BodyCount = 0;
     int swordvisit = 0;
     int intPrevRoomNum, intCurrentRoomNum, intPlayerChoice, intRoomID;
+    boolean killedMob = false;
     Scanner choiceIn;
     public PathDecisions()
     {}
-    public int choosePath(int prevRoom, int currentRoom)
+    public int choosePath(int prevRoom, int currentRoom, boolean killedMob)
     {
         this.intPrevRoomNum = prevRoom;
         this.intCurrentRoomNum = currentRoom;
+        this.killedMob = killedMob;
         // room 7 is the start location
         // room 1 has the exit door
         // room 6 has the sword
@@ -31,6 +33,10 @@ public class PathDecisions
             System.out.println(" 1. - Left, 2. Right, 3. Back ");
             intPlayerChoice = verifyChoice(3);
             intRoomID = idSetterRoom4(intPlayerChoice);
+            if(killedMob)
+            {
+                room4BodyCount++;
+            }
         }
         else if (intPrevRoomNum == 4 && intCurrentRoomNum == 3)
         {
@@ -39,6 +45,10 @@ public class PathDecisions
             System.out.println(" 1. - Left, 2. Forward, 3. Right, 4. Back ");
             intPlayerChoice = verifyChoice(4);
             intRoomID = idSetterRoom3(intPlayerChoice);
+            if(killedMob)
+            {
+                room3BodyCount++;
+            }
         }
         else if (intPrevRoomNum == 4 && intCurrentRoomNum == 5)
         {
@@ -47,6 +57,10 @@ public class PathDecisions
             System.out.println(" 1. - Left, 2. Right, 3. Back ");
             intPlayerChoice = verifyChoice(3);
             intRoomID = idSetterRoom5(intPlayerChoice);
+            if(killedMob)
+            {
+                room5BodyCount++;
+            }
         }
         else if (intCurrentRoomNum == 6)
         {
@@ -58,10 +72,14 @@ public class PathDecisions
         else if (intCurrentRoomNum == 2)
         {
             // You are in room 2, choices of back to 3
-            System.out.println("A dead end... Better head back.");
+            System.out.println("This is a dead end... Better head back.");
             System.out.println(" 1. - Back ");
             intPlayerChoice = verifyChoice(1);
             intRoomID = 3;
+            if(killedMob)
+            {
+                room3BodyCount++;
+            }
         }
         else if (intCurrentRoomNum == 8)
         {
@@ -70,6 +88,10 @@ public class PathDecisions
             System.out.println(" 1. - Back ");
             intPlayerChoice = verifyChoice(1);
             intRoomID = 5;
+            if(killedMob)
+            {
+                room8BodyCount++;
+            }
         }
         else if (intPrevRoomNum == 4 && intCurrentRoomNum == 7)
         {
@@ -77,6 +99,10 @@ public class PathDecisions
             System.out.println(" 1. - Back ");
             intPlayerChoice = verifyChoice(1);
             intRoomID = 4;
+            if(killedMob)
+            {
+                room7BodyCount++;
+            }
         }
         else if (intPrevRoomNum == 5 && intCurrentRoomNum == 4)
         {
@@ -85,6 +111,10 @@ public class PathDecisions
             System.out.println(" 1. - Left, 2. Forward, 3. Back ");
             intPlayerChoice = verifyChoice(3);
             intRoomID = idSetterRoom4(intPlayerChoice);
+            if(killedMob)
+            {
+                room4BodyCount++;
+            }
         }
         else if (intPrevRoomNum == 1 && intCurrentRoomNum == 5)
         {
@@ -94,6 +124,10 @@ public class PathDecisions
             System.out.println(" 1. - Forward, 2. Right, 3. Back ");
             intPlayerChoice = verifyChoice(3);
             intRoomID = idSetterRoom5(intPlayerChoice);
+            if(killedMob)
+            {
+                room5BodyCount++;
+            }
         }
         else if (intPrevRoomNum == 3 && intCurrentRoomNum == 4)
         {
@@ -103,6 +137,10 @@ public class PathDecisions
             System.out.println(" 1. - Forward, 2. Right, 3. Back ");
             intPlayerChoice = verifyChoice(3);
             intRoomID = idSetterRoom4(intPlayerChoice);
+            if(killedMob)
+            {
+                room4BodyCount++;
+            }
         }
         else if (intPrevRoomNum == 3 && intCurrentRoomNum == 1)
         {
@@ -112,6 +150,10 @@ public class PathDecisions
             System.out.println(" 1. - Left, 2. Forward, 3. Back ");
             intPlayerChoice = verifyChoice(3);
             intRoomID = idSetterRoom1(intPlayerChoice);
+            if(killedMob)
+            {
+                room1BodyCount++;
+            }
         }
         else if (intPrevRoomNum == 2 && intCurrentRoomNum == 3)
         {
@@ -121,6 +163,10 @@ public class PathDecisions
             System.out.println(" 1. - Left, 2. Forward, 3. Right, 4. Back ");
             intPlayerChoice = verifyChoice(4);
             intRoomID = idSetterRoom3(intPlayerChoice);
+            if(killedMob)
+            {
+                room3BodyCount++;
+            }
         }
         else if (intPrevRoomNum == 6 && intCurrentRoomNum == 3)
         {
@@ -130,6 +176,10 @@ public class PathDecisions
             System.out.println(" 1. - Left, 2. Forward, 3. Right, 4. Back ");
             intPlayerChoice = verifyChoice(4);
             intRoomID = idSetterRoom3(intPlayerChoice);
+            if(killedMob)
+            {
+                room3BodyCount++;
+            }
         }
         else if (intPrevRoomNum == 8 && intCurrentRoomNum == 5)
         {
@@ -140,6 +190,10 @@ public class PathDecisions
             System.out.println(" 1. - Left, 2. Forward, 3. Back ");
             intPlayerChoice = verifyChoice(3);
             intRoomID = idSetterRoom5(intPlayerChoice);
+            if(killedMob)
+            {
+                room5BodyCount++;
+            }
         }
         else if (intPrevRoomNum == 1 && intCurrentRoomNum == 3)
         {
@@ -149,6 +203,10 @@ public class PathDecisions
             System.out.println(" 1. - Left, 2. Forward, 3. Right, 4. Back ");
             intPlayerChoice = verifyChoice(4);
             intRoomID = idSetterRoom3(intPlayerChoice);
+            if(killedMob)
+            {
+                room3BodyCount++;
+            }
         }
         else if (intPrevRoomNum == 5 && intCurrentRoomNum == 1)
         {
@@ -158,9 +216,15 @@ public class PathDecisions
             System.out.println(" 1. - Forward, 2. Right, 3. Back ");
             intPlayerChoice = verifyChoice(3);
             intRoomID = idSetterRoom1(intPlayerChoice);
+            if(killedMob)
+            {
+                room1BodyCount++;
+            }
         }
+        // Send room id choice back to main
         return intRoomID;
     }
+
     private int verifyChoice(int options)
     {
         // options parameter brings in an integer number of choices to test for
@@ -437,7 +501,6 @@ public class PathDecisions
             {
                 System.out.println("Freedom beckons, albeit one tainted by the blood of the countless creatures you've slain");
             }
-            room1BodyCount++;
         }
         else if(currentRoomNum == 2)
         {
@@ -452,7 +515,6 @@ public class PathDecisions
                 System.out.println("You've been through this room just a time or two before. You can tell from the pile \n" +
                         "of bodies that had already started stinking, you full-fledged psychopath.");
             }
-            room2BodyCount++;
         }
         else if(currentRoomNum == 3)
         {
@@ -467,7 +529,6 @@ public class PathDecisions
                 System.out.println("You've been through this room just a time or two before. You can tell from the pile \n" +
                         "of bodies that had already started stinking, you full-fledged psychopath.");
             }
-            room3BodyCount++;
         }
         else if(currentRoomNum == 4)
         {
@@ -493,7 +554,6 @@ public class PathDecisions
                 System.out.println("You've been through this room just a time or two before. You can tell from the pile \n" +
                         "of bodies that had already started stinking, you full-fledged psychopath.");
             }
-            room4BodyCount++;
         }
         else if(currentRoomNum == 5)
         {
@@ -508,7 +568,6 @@ public class PathDecisions
                 System.out.println("You've been through this room just a time or two before. You can tell from the pile \n" +
                         "of bodies that had already started stinking, you full-fledged psychopath.");
             }
-            room5BodyCount++;
         }
         else if(currentRoomNum == 6)
         {
@@ -567,7 +626,6 @@ public class PathDecisions
                 System.out.println("The bodies are stacking up in here. The already atrocious smell is getting even worse. \n" +
                         "You really need to get out of it sooner rather than later.");
             }
-            room7BodyCount++;
         }
         else if(currentRoomNum == 8)
         {
@@ -582,7 +640,6 @@ public class PathDecisions
                 System.out.println("You've been through this room just a time or two before. You can tell from the pile \n" +
                         "of bodies that had already started stinking, you full-fledged psychopath.");
             }
-            room8BodyCount++;
         }
     }
 }
