@@ -1,14 +1,10 @@
 package GameDev;
 
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
-import java.io.File;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
-import static com.sun.javafx.scene.control.skin.Utils.getResource;
+
 import static java.lang.Thread.sleep;
 
 public class MobWrangler {
